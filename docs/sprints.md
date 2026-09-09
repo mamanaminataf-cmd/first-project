@@ -2,7 +2,9 @@
 
 ## Statut actuel
 
-**Sprint actuel :** Sprint 0 — Audit et cadrage
+**Sprint actuel :** Sprint 1 — Conception fonctionnelle
+
+**Sprint précédent :** Sprint 0 — Audit et cadrage ✅
 
 ## Liste des sprints
 
@@ -29,7 +31,8 @@
 
 ## État par phase
 
-- **Sprint 0 (en cours) :** configuration initiale. Uniquement préparation et documentation, pas de développement métier.
+- **Sprint 0 (terminé ✅) :** Audit et cadrage. Configuration initiale du projet, documentation, structure, Git.
+- **Sprint 1 (en cours) :** Conception fonctionnelle. Détail des pages, flux, états et règles métier.
 
 ## À ne PAS faire pendant la configuration initiale
 

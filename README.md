@@ -121,7 +121,7 @@ security(auth): improve session validation
 
 ## Statut du projet
 
-**Sprint actuel :** Sprint 0 - Audit et cadrage
+**Sprint actuel :** Sprint 1 — Conception fonctionnelle
 
 **Phase :** Configuration initiale uniquement
 
@@ -130,6 +130,7 @@ Voir `docs/sprints.md` pour le plan complet des sprints.
 ## Documentation
 
 - `docs/cahier-des-charges.md` — Cahier des charges
+- `docs/functional-design.md` — Conception fonctionnelle
 - `docs/architecture.md` — Architecture technique
 - `docs/database.md` — Base de données
 - `docs/security.md` — Sécurité

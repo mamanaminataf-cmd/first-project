@@ -220,9 +220,9 @@ Maintenir à jour :
 
 ## 16. STATUT DU PROJET
 
-**Sprint actuel :** 0 - Audit et cadrage
+**Sprint actuel :** 1 - Conception fonctionnelle
 
-**Phase :** Configuration initiale uniquement
+**Phase :** Documentation et conception fonctionnelle uniquement
 
 **À ne PAS faire maintenant :**
 - Créer des tables
