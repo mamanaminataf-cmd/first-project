@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes commandes — Bio Market</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo"><span class="leaf">🌿</span> Bio Market</a>
+      <div class="nav-links">
+        <a href="products.html">Catalogue</a>
+        <a href="cart.html" title="Panier">🛒</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container" style="max-width:860px;">
+    <h1 class="section-title">Mes commandes</h1>
+
+    <div class="order-card">
+      <div>
+        <div class="num">#BM-86751</div>
+        <div class="date">12/09/2026</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:13px;color:#607d8b;">Statut</div>
+        <span class="badge badge-amber">En préparation</span>
+      </div>
+      <div style="text-align:right;">
+        <div class="amount" id="orders-amount">—</div>
+        <a href="#" class="btn btn-outline btn-sm" style="margin-top:6px;">Détails</a>
+      </div>
+    </div>
+
+    <div class="order-card">
+      <div>
+        <div class="num">#BM-86712</div>
+        <div class="date">28/08/2026</div>
+      </div>
+      <div style="text-align:center;">
+        <span class="badge badge-green">Livrée</span>
+      </div>
+      <div style="text-align:right;">
+        <div class="amount">24,30 €</div>
+        <button class="btn btn-outline btn-sm" style="margin-top:6px;" onclick="alert('Prototype : laisser un avis')">⭐ Laisser un avis</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="products-data.js"></script>
+  <script>
+    const o = JSON.parse(localStorage.getItem('biomarket_last_order') || 'null');
+    if (o) document.getElementById('orders-amount').textContent = o.subtotal.toFixed(2) + ' €';
+  </script>
+</body>
+</html>

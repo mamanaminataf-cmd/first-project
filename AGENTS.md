@@ -23,7 +23,7 @@ Utilisateur → Frontend → Backend/API → Base de données
 ```
 
 **Stack technique (à confirmer) :**
-- Frontend : React/Next.js (via Lovable)
+- Frontend : React/Next.js (développé avec OpenCode)
 - Backend : Node.js / Supabase (à valider)
 - Base de données : PostgreSQL / Supabase
 - Auth : Supabase Auth ou custom
@@ -34,13 +34,13 @@ Utilisateur → Frontend → Backend/API → Base de données
 
 ## 3. CONVENTIONS DE CODE
 
-### Frontend (Lovable)
+### Frontend
 - Composants React
 - TypeScript
 - Tailwind CSS
 - Convention de nommage : PascalCase pour les composants
 
-### Backend (OpenCode)
+### Backend
 - TypeScript / JavaScript
 - Migration SQL syntaxe PostgreSQL
 - Convention de nommage : snake_case pour la DB
@@ -107,32 +107,16 @@ test(products): add product validation tests
 - Tests d'intégration pour les API
 - Tests de permissions (RBAC)
 - Tests de validation des données
-- Pas de tests pour le code généré par Lovable (UI uniquement)
+- Tests frontend avec les outils adaptés au framework choisi
 
 ---
 
-## 8. RÔLE DE LOVABLE
-
-### Utiliser Lovable pour
-- Interface utilisateur (UI/UX)
-- Pages et composants
-- Design system
-- Responsive design
-- Expérience utilisateur
-
-### NE PAS utiliser Lovable pour
-- Backend / logique métier
-- Base de données
-- Authentification
-- Permissions / RLS
-- Migrations SQL
-- Tests backend
-
----
-
-## 9. RÔLE D'OPENCODE
+## 8. RÔLE D'OPENCODE
 
 ### Utiliser OpenCode pour
+- Frontend / Interface utilisateur (UI/UX)
+- Composants, pages et design system
+- Responsive design, expérience utilisateur
 - Backend / logique métier
 - Base de données
 - Migrations SQL
@@ -147,7 +131,7 @@ test(products): add product validation tests
 
 ---
 
-## 10. RÔLE DE GITHUB
+## 9. RÔLE DE GITHUB
 
 - Source de vérité du projet
 - Versionnement
@@ -159,7 +143,7 @@ test(products): add product validation tests
 
 ---
 
-## 11. RÈGLES - MIGRATIONS SQL
+## 10. RÈGLES - MIGRATIONS SQL
 
 - Pas de migrations définitives pendant Sprint 0-1
 - Chaque migration doit être testée
@@ -169,7 +153,7 @@ test(products): add product validation tests
 
 ---
 
-## 12. RÈGLES - BASE DE DONNÉES
+## 11. RÈGLES - BASE DE DONNÉES
 
 - Utiliser les conventions snake_case
 - Clés primaires : `id` (UUID ou SERIAL)
@@ -180,7 +164,7 @@ test(products): add product validation tests
 
 ---
 
-## 13. RÈGLES - PERMISSIONS (RBAC)
+## 12. RÈGLES - PERMISSIONS (RBAC)
 
 ### Rôles
 - `buyer` : lecture produits, panier, commandes, avis
@@ -195,7 +179,7 @@ test(products): add product validation tests
 
 ---
 
-## 14. RÈGLES - PULL REQUESTS
+## 13. RÈGLES - PULL REQUESTS
 
 - Toute feature importante passe par une PR
 - PR doit expliquer : problème, solution, fichiers, tests, risques
@@ -205,7 +189,7 @@ test(products): add product validation tests
 
 ---
 
-## 15. DOCUMENTATION
+## 14. DOCUMENTATION
 
 Maintenir à jour :
 - `docs/cahier-des-charges.md`
@@ -218,7 +202,7 @@ Maintenir à jour :
 
 ---
 
-## 16. STATUT DU PROJET
+## 15. STATUT DU PROJET
 
 **Sprint actuel :** 1 - Conception fonctionnelle
 
@@ -234,4 +218,4 @@ Maintenir à jour :
 
 ---
 
-Dernière mise à jour : Configuration initiale
+Dernière mise à jour : Stack simplifiée — Lovable retiré

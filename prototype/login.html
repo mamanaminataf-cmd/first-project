@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion — Bio Market</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo"><span class="leaf">🌿</span> Bio Market</a>
+      <div class="nav-links">
+        <a href="products.html">Catalogue</a>
+        <a href="cart.html" title="Panier">🛒</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="auth-box">
+      <h2>Bienvenue 👋</h2>
+      <p class="subtitle">Connectez-vous pour continuer</p>
+
+      <div class="alert alert-error" id="error-box" style="display:none;">Email ou mot de passe incorrect.</div>
+      <div class="alert alert-info" id="hint-box" style="display:none;">Prototype : cliquez sur « Se connecter » pour accéder à la démo.</div>
+
+      <div class="field"><label>Adresse email</label><input type="email" id="email" placeholder="vous@exemple.com"></div>
+      <div class="field"><label>Mot de passe</label><input type="password" id="password" placeholder="••••••••"></div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;font-size:13px;">
+        <label><input type="checkbox"> Se souvenir de moi</label>
+        <a href="#" style="color:#2e7d32;" onclick="alert('Prototype : réinitialisation de mot de passe')">Mot de passe oublié ?</a>
+      </div>
+
+      <button class="btn btn-primary btn-block" onclick="doLogin()">Se connecter</button>
+
+      <p style="text-align:center;font-size:14px;margin-top:18px;">
+        Pas de compte ? <a href="register.html" style="color:#2e7d32;font-weight:600;">S'inscrire</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="products-data.js"></script>
+  <script>
+    function doLogin() {
+      const email = document.getElementById('email').value;
+      const pass = document.getElementById('password').value;
+      document.getElementById('hint-box').style.display = 'block';
+      document.getElementById('hint-box').textContent = '✅ Démo : connexion simulée (email: ' + email + '). Aucune vérification réelle.';
+      setTimeout(() => location.href = 'index.html', 1200);
+    }
+  </script>
+</body>
+</html>

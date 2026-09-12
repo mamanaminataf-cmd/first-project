@@ -59,7 +59,7 @@ Trois rôles principaux :
 
 > **Note :** La stack technique définitive est en cours de validation.
 
-- **Frontend :** React / Next.js (via Lovable)
+- **Frontend :** React / Next.js (développé avec OpenCode)
 - **Backend :** Node.js / Supabase (à valider)
 - **Base de données :** PostgreSQL / Supabase
 - **Auth :** Supabase Auth ou custom
@@ -123,7 +123,7 @@ security(auth): improve session validation
 
 **Sprint actuel :** Sprint 1 — Conception fonctionnelle
 
-**Phase :** Configuration initiale uniquement
+**Phase :** Documentation et conception fonctionnelle uniquement
 
 Voir `docs/sprints.md` pour le plan complet des sprints.
 

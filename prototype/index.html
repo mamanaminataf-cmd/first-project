@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bio Market — Produits biologiques</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo"><span class="leaf">🌿</span> Bio Market</a>
+      <form class="search" onsubmit="return false;">
+        <input type="text" placeholder="Rechercher un produit bio..." id="search-input">
+        <button onclick="location.href='products.html?q='+encodeURIComponent(document.getElementById('search-input').value)">🔍</button>
+      </form>
+      <div class="nav-links">
+        <a href="products.html">Catalogue</a>
+        <a href="login.html">Connexion</a>
+        <a href="register.html" class="btn btn-primary btn-sm">S'inscrire</a>
+        <a href="cart.html" title="Panier">🛒 <span class="notif-badge">2</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Des produits biologiques, du producteur au panier</h1>
+    <p>Découvrez des produits frais, certifiés bio et vendus directement par des producteurs locaux de confiance.</p>
+    <a href="products.html" class="btn btn-outline" style="border-color:#fff;color:#fff;background:rgba(255,255,255,0.15);">Explorer le catalogue →</a>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">Catégories <a href="products.html" class="link">Tout voir →</a></h2>
+    <div class="categories">
+      <a href="products.html?cat=legumes" class="category"><span class="icon">🥕</span>Légumes</a>
+      <a href="products.html?cat=fruits" class="category"><span class="icon">🍎</span>Fruits</a>
+      <a href="products.html?cat=ferme" class="category"><span class="icon">🥚</span>Produits de la ferme</a>
+      <a href="products.html?cat=cereales" class="category"><span class="icon">🌾</span>Céréales</a>
+      <a href="products.html?cat=boissons" class="category"><span class="icon">🥛</span>Boissons</a>
+      <a href="products.html?cat=epicerie" class="category"><span class="icon">🍯</span>Épicerie bio</a>
+    </div>
+
+    <h2 class="section-title">Produits du moment <a href="products.html" class="link">Tout voir →</a></h2>
+    <div class="products" id="featured-products"></div>
+
+    <div class="alert alert-info" style="margin-top:30px;">💡 Ceci est un <strong>prototype statique</strong> du design fonctionnel (Sprint 1). Les interactions fiches produit, panier et recherche sont simulées pour la démonstration.</div>
+  </main>
+
+  <footer class="footer">
+    <div class="cols">
+      <div><h4>🌿 Bio Market</h4><a href="#">À propos</a><a href="#">Produits</a><a href="#">Vendeurs</a></div>
+      <div><h4>Aide</h4><a href="#">Nous contacter</a><a href="#">Livraison</a><a href="#">Retours</a></div>
+      <div><h4>Compte</h4><a href="login.html">Connexion</a><a href="register.html">Inscription</a><a href="cart.html">Panier</a></div>
+    </div>
+    <div class="copy">© 2026 Bio Market — Prototype de démonstration (Sprint 1)</div>
+  </footer>
+
+  <script src="products-data.js"></script>
+  <script>
+    const container = document.getElementById('featured-products');
+    const featured = PRODUCTS.slice(0, 8);
+    container.innerHTML = featured.map(renderCard).join('');
+  </script>
+</body>
+</html>

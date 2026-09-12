@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalogue — Bio Market</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo"><span class="leaf">🌿</span> Bio Market</a>
+      <form class="search" onsubmit="return false;">
+        <input type="text" placeholder="Rechercher un produit bio..." id="search-input">
+        <button onclick="applyFilters()">🔍</button>
+      </form>
+      <div class="nav-links">
+        <a href="products.html">Catalogue</a>
+        <a href="login.html">Connexion</a>
+        <a href="register.html" class="btn btn-primary btn-sm">S'inscrire</a>
+        <a href="cart.html" title="Panier">🛒</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="breadcrumb"><a href="index.html">Accueil</a> / Catalogue</div>
+
+    <div class="filters">
+      <div class="filter-group">
+        <label for="f-search">Recherche</label>
+        <input type="text" id="f-search" placeholder="Nom du produit...">
+      </div>
+      <div class="filter-group">
+        <label for="f-cat">Catégorie</label>
+        <select id="f-cat">
+          <option value="">Toutes</option>
+          <option>Légumes</option>
+          <option>Fruits</option>
+          <option>Ferme</option>
+          <option>Céréales</option>
+          <option>Boissons</option>
+          <option>Épicerie</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="f-price">Prix max</label>
+        <input type="number" id="f-price" placeholder="€" min="0" step="0.5">
+      </div>
+      <div class="filter-group">
+        <label for="f-sort">Trier par</label>
+        <select id="f-sort">
+          <option value="popular">Popularité</option>
+          <option value="price-asc">Prix croissant</option>
+          <option value="price-desc">Prix décroissant</option>
+          <option value="rating">Meilleures notes</option>
+        </select>
+      </div>
+      <button class="btn btn-outline" onclick="resetFilters()">Réinitialiser</button>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <h2 class="section-title" style="margin:0;">Tous les produits</h2>
+      <span id="result-count" style="font-size:13px;color:#607d8b;"></span>
+    </div>
+
+    <div class="products" id="product-grid"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="cols">
+      <div><h4>🌿 Bio Market</h4><a href="#">À propos</a><a href="#">Produits</a><a href="#">Vendeurs</a></div>
+      <div><h4>Aide</h4><a href="#">Nous contacter</a><a href="#">Livraison</a><a href="#">Retours</a></div>
+      <div><h4>Compte</h4><a href="login.html">Connexion</a><a href="register.html">Inscription</a><a href="cart.html">Panier</a></div>
+    </div>
+    <div class="copy">© 2026 Bio Market — Prototype de démonstration</div>
+  </footer>
+
+  <script src="products-data.js"></script>
+  <script>
+    const grid = document.getElementById('product-grid');
+    const count = document.getElementById('result-count');
+    const params = new URLSearchParams(location.search);
+
+    if (params.get('q')) document.getElementById('f-search').value = params.get('q');
+    if (params.get('cat')) document.getElementById('f-cat').value = params.get('cat');
+
+    function applyFilters() {
+      const q = document.getElementById('f-search').value.toLowerCase().trim();
+      const cat = document.getElementById('f-cat').value;
+      const maxP = parseFloat(document.getElementById('f-price').value);
+      const sort = document.getElementById('f-sort').value;
+
+      let list = PRODUCTS.filter(p =>
+        (!q || p.name.toLowerCase().includes(q)) &&
+        (!cat || p.cat === cat) &&
+        (isNaN(maxP) || p.price <= maxP)
+      );
+
+      if (sort === 'price-asc') list.sort((a, b) => a.price - b.price);
+      else if (sort === 'price-desc') list.sort((a, b) => b.price - a.price);
+      else if (sort === 'rating') list.sort((a, b) => b.rating - a.rating);
+      else list.sort((a, b) => b.reviews - a.reviews);
+
+      grid.innerHTML = list.map(renderCard).join('');
+      count.textContent = list.length + ' produit(s)';
+    }
+
+    function resetFilters() {
+      document.getElementById('f-search').value = '';
+      document.getElementById('f-cat').value = '';
+      document.getElementById('f-price').value = '';
+      document.getElementById('f-sort').value = 'popular';
+      applyFilters();
+    }
+
+    document.getElementById('f-search').addEventListener('input', applyFilters);
+    document.getElementById('f-cat').addEventListener('change', applyFilters);
+    document.getElementById('f-price').addEventListener('input', applyFilters);
+    document.getElementById('f-sort').addEventListener('change', applyFilters);
+
+    applyFilters();
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiement — Bio Market</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo"><span class="leaf">🌿</span> Bio Market</a>
+      <div class="nav-links">
+        <a href="products.html">Catalogue</a>
+        <a href="cart.html" title="Panier">🛒</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container" style="max-width:760px;">
+    <div class="checkout-steps">
+      <div class="step done"><span class="dot">✓</span><div class="label">Panier</div></div>
+      <div class="step done"><span class="dot">✓</span><div class="label">Livraison</div></div>
+      <div class="step active"><span class="dot">3</span><div class="label">Paiement</div></div>
+      <div class="step"><span class="dot">4</span><div class="label">Confirmation</div></div>
+    </div>
+
+    <div class="card" style="padding:24px;">
+      <h2 style="margin-bottom:6px;">Paiement sécurisé</h2>
+      <p style="font-size:13px;color:#607d8b;margin-bottom:20px;">🔒 Démo — aucun paiement réel n'est effectué.</p>
+
+      <div class="field"><label>Numéro de carte</label><input type="text" placeholder="4242 4242 4242 4242"></div>
+      <div class="field" style="display:flex;gap:16px;">
+        <div style="flex:1;"><label>Expiration</label><input type="text" placeholder="MM/AA"></div>
+        <div style="flex:1;"><label>CVC</label><input type="text" placeholder="123"></div>
+      </div>
+      <div class="field"><label>Nom sur la carte</label><input type="text" placeholder="AMINA TEST"></div>
+
+      <button class="btn btn-primary btn-block" onclick="confirmOrder()" style="margin-top:8px;">💰 Payer et confirmer la commande</button>
+    </div>
+  </main>
+
+  <script>
+    function confirmOrder() {
+      const cart = JSON.parse(localStorage.getItem('biomarket_cart') || '[]');
+      if (cart.length === 0) { alert('Votre panier est vide'); return; }
+      const subtotal = cart.reduce((s, i) => {
+        const p = PRODUCTS.find(x => x.id === i.id);
+        return p ? s + p.price * i.qty : s;
+      }, 0);
+      localStorage.setItem('biomarket_last_order', JSON.stringify({ subtotal, date: new Date().toISOString() }));
+      localStorage.setItem('biomarket_cart', '[]');
+      location.href = 'order-confirmation.html';
+    }
+  </script>
+  <script src="products-data.js"></script>
+</body>
+</html>

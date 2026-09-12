@@ -14,18 +14,18 @@
 | 1 | Conception fonctionnelle | GitHub + documentation |
 | 2 | Architecture technique | OpenCode + GitHub |
 | 3 | Conception et création de la base de données | OpenCode + GitHub |
-| 4 | Authentification et profils | OpenCode (logique) + Lovable (UI) |
-| 5 | Produits et catalogue | OpenCode (backend/db) + Lovable (UI) |
-| 6 | Panier | OpenCode (logique) + Lovable (UI) |
-| 7 | Commandes | OpenCode + Lovable |
-| 8 | Paiement | OpenCode + Lovable |
-| 9 | Espace vendeur | OpenCode (logique) + Lovable (dashboard) |
-| 10 | Administration | OpenCode (permissions/logique) + Lovable (UI admin) |
-| 11 | Recherche, filtres et UX | Lovable (UX/UI) + OpenCode (recherche/backend) |
-| 12 | Sécurité et permissions | OpenCode principalement |
-| 13 | Notifications et fonctionnalités avancées | OpenCode (logique) + Lovable (UI) |
+| 4 | Authentification et profils | OpenCode |
+| 5 | Produits et catalogue | OpenCode |
+| 6 | Panier | OpenCode |
+| 7 | Commandes | OpenCode |
+| 8 | Paiement | OpenCode |
+| 9 | Espace vendeur | OpenCode |
+| 10 | Administration | OpenCode |
+| 11 | Recherche, filtres et UX | OpenCode |
+| 12 | Sécurité et permissions | OpenCode |
+| 13 | Notifications et fonctionnalités avancées | OpenCode |
 | 14 | Tests complets | OpenCode + GitHub |
-| 15 | Correction et optimisation | OpenCode principalement, Lovable (bugs UI/UX) |
+| 15 | Correction et optimisation | OpenCode |
 | 16 | Audit final | OpenCode + GitHub |
 | 17 | Déploiement | GitHub + infrastructure choisie |
 

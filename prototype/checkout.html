@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commande — Bio Market</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo"><span class="leaf">🌿</span> Bio Market</a>
+      <div class="nav-links">
+        <a href="products.html">Catalogue</a>
+        <a href="cart.html" title="Panier">🛒</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container" style="max-width:760px;">
+    <div class="checkout-steps">
+      <div class="step active"><span class="dot">1</span><div class="label">Panier</div></div>
+      <div class="step active"><span class="dot">2</span><div class="label">Livraison</div></div>
+      <div class="step"><span class="dot">3</span><div class="label">Paiement</div></div>
+      <div class="step"><span class="dot">4</span><div class="label">Confirmation</div></div>
+    </div>
+
+    <div class="card" style="padding:24px;">
+      <h2 style="margin-bottom:18px;">Adresse de livraison</h2>
+      <div class="field"><label>Nom complet</label><input type="text" value="Amina Test"></div>
+      <div class="field"><label>Adresse</label><input type="text" value="12 rue des Jardins"></div>
+      <div class="field"><label>Ville</label><input type="text" value="Paris"></div>
+      <div class="field" style="display:flex;gap:16px;">
+        <div style="flex:1;"><label>Code postal</label><input type="text" value="75001"></div>
+        <div style="flex:1;"><label>Téléphone</label><input type="text" value="06 12 34 56 78"></div>
+      </div>
+      <button class="btn btn-primary" onclick="goPayment()">Continuer vers le paiement →</button>
+    </div>
+  </main>
+
+  <script>
+    function goPayment() {
+      const cart = JSON.parse(localStorage.getItem('biomarket_cart') || '[]');
+      if (cart.length === 0) { alert('Votre panier est vide'); return; }
+      location.href = 'payment.html';
+    }
+  </script>
+</body>
+</html>

@@ -92,5 +92,4 @@ Ajustables selon l'évolution du projet.
 | Outil | Rôle |
 |---|---|
 | **GitHub** | versionnement, code, documentation, branches, PR, issues, CI/CD |
-| **Lovable** | interface utilisateur, UI/UX, composants, design system, responsive |
-| **OpenCode** | backend, logique métier, base de données, migrations, auth, permissions, API, tests, sécurité |
+| **OpenCode** | frontend (UI/UX, composants, design system, responsive), backend, logique métier, base de données, migrations, auth, permissions, API, tests, sécurité |

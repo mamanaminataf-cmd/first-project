@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord vendeur — Bio Market</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo"><span class="leaf">🌿</span> Bio Market</a>
+      <div class="nav-links">
+        <a href="products.html">Catalogue</a>
+        <a href="index.html">Déconnexion</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container" style="max-width:960px;">
+    <h1 class="section-title">Tableau de bord vendeur <span class="link">Ma boutique : Ferme du Val</span></h1>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:28px;">
+      <div class="card" style="padding:20px;"><div style="font-size:13px;color:#607d8b;">Ventes du mois</div><div style="font-size:26px;font-weight:700;color:#2e7d32;">1 248,50 €</div></div>
+      <div class="card" style="padding:20px;"><div style="font-size:13px;color:#607d8b;">Commandes reçues</div><div style="font-size:26px;font-weight:700;">17</div></div>
+      <div class="card" style="padding:20px;"><div style="font-size:13px;color:#607d8b;">Produits actifs</div><div style="font-size:26px;font-weight:700;">12</div></div>
+      <div class="card" style="padding:20px;"><div style="font-size:13px;color:#607d8b;">Stock total</div><div style="font-size:26px;font-weight:700;color:#f57f17;">42</div></div>
+    </div>
+
+    <h2 class="section-title">Commandes récentes <span class="link" href="#">Tout voir →</span></h2>
+    <div class="order-card">
+      <div><div class="num">#BM-86751</div><div class="date">12/09/2026</div></div>
+      <div style="text-align:center;"><span class="badge badge-amber">En préparation</span></div>
+      <div style="text-align:right;"><div class="amount">46,20 €</div><button class="btn btn-primary btn-sm" style="margin-top:6px;">Marquer expédiée</button></div>
+    </div>
+    <div class="order-card">
+      <div><div class="num">#BM-86702</div><div class="date">10/09/2026</div></div>
+      <div style="text-align:center;"><span class="badge badge-green">Expédiée</span></div>
+      <div style="text-align:right;"><div class="amount">23,80 €</div></div>
+    </div>
+
+    <h2 class="section-title" style="margin-top:34px;">Mes produits <span class="link" href="#" onclick="alert('Prototype : formulaire d\\'ajout produit')">+ Ajouter un produit</span></h2>
+    <div class="products" id="my-products"></div>
+  </main>
+
+  <script src="products-data.js"></script>
+  <script>
+    const mine = PRODUCTS.filter(p => p.seller === 'Ferme du Val');
+    document.getElementById('my-products').innerHTML = mine.map(p => renderCard(p)).join('');
+  </script>
+</body>
+</html>

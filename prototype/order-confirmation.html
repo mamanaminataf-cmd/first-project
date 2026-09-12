@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commande confirmée — Bio Market</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo"><span class="leaf">🌿</span> Bio Market</a>
+      <div class="nav-links">
+        <a href="products.html">Catalogue</a>
+        <a href="cart.html" title="Panier">🛒</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container" style="max-width:640px;text-align:center;">
+    <div class="card" style="padding:40px;">
+      <div style="font-size:72px;">🎉</div>
+      <h1>Merci, votre commande est confirmée !</h1>
+      <p style="color:#607d8b;margin-top:10px;">
+        Numéro de commande : <strong id="order-num">BM-86751</strong><br>
+        Un email de confirmation vous a été envoyé.<br>
+        <span id="order-meta"></span>
+      </p>
+      <div class="alert alert-success" style="margin-top:20px;">Votre paiement a bien été accepté. Vous pouvez suivre votre commande depuis « Mes commandes ».</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:20px;">
+        <a href="orders.html" class="btn btn-primary">Suivre ma commande</a>
+        <a href="products.html" class="btn btn-outline">Continuer mes achats</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const o = JSON.parse(localStorage.getItem('biomarket_last_order') || 'null');
+    if (o) {
+      const d = new Date(o.date);
+      document.getElementById('order-meta').textContent = 'Montant payé : ' + o.subtotal.toFixed(2) + ' € · ' + d.toLocaleDateString('fr-FR');
+    }
+  </script>
+</body>
+</html>
