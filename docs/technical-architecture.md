@@ -71,10 +71,10 @@ VITE_SUPABASE_ANON_KEY=      # Clé publique anon
 - [x] Choix de la stack (Supabase validé)
 - [x] Installation de Node.js (v24)
 - [x] Document d'architecture technique
-- [ ] Initialisation du projet React + Vite + Tailwind
-- [ ] Configuration des routes
-- [ ] Composants de base (Header, Footer, Card produit, etc.)
-- [ ] Test et vérification
-- [ ] Commit + push
+- [x] Initialisation du projet React + Vite + Tailwind
+- [x] Configuration des routes
+- [x] Composants de base (Header, Footer, Card produit, etc.)
+- [x] Test et vérification
+- [x] Commit + push
 
-Dernière mise à jour : Sprint 2 — Architecture technique
+Dernière mise à jour : Sprint 3 — Base de données (voir `docs/database.md`)

@@ -126,9 +126,9 @@ security(auth): improve session validation
 
 ## Statut du projet
 
-**Sprint actuel :** Sprint 2 — Architecture technique
+**Sprint actuel :** Sprint 3 — Conception et création de la base de données
 
-**Phase :** Architecture technique — projet React initialisé (Sprint 2)
+**Phase :** Conception détaillée de la base + migrations SQL (testées)
 
 Voir `docs/sprints.md` pour le plan complet des sprints.
 

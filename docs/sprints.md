@@ -2,9 +2,9 @@
 
 ## Statut actuel
 
-**Sprint actuel :** Sprint 2 — Architecture technique
+**Sprint actuel :** Sprint 3 — Conception et création de la base de données
 
-**Sprint précédent :** Sprint 1 — Conception fonctionnelle ✅
+**Sprint précédent :** Sprint 2 — Architecture technique ✅
 
 ## Liste des sprints
 
@@ -33,7 +33,8 @@
 
 - **Sprint 0 (terminé ✅) :** Audit et cadrage. Configuration initiale du projet, documentation, structure, Git.
 - **Sprint 1 (terminé ✅) :** Conception fonctionnelle. `docs/functional-design.md` : pages, flux, états, règles métier.
-- **Sprint 2 (en cours) :** Architecture technique. Stack choisie (React + Vite + Tailwind + Supabase), projet initialisé.
+- **Sprint 2 (terminé ✅) :** Architecture technique. Stack choisie (React + Vite + Tailwind + Supabase), projet initialisé.
+- **Sprint 3 (en cours) :** Conception et création de la base de données. `docs/database.md` détaillée, migrations SQL testées (PGlite).
 
 ## À ne PAS faire pendant la configuration initiale
 

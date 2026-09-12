@@ -204,17 +204,16 @@ Maintenir à jour :
 
 ## 15. STATUT DU PROJET
 
-**Sprint actuel :** 2 - Architecture technique
+**Sprint actuel :** 3 - Conception et création de la base de données
 
-**Phase :** Documentation et conception fonctionnelle uniquement
+**Phase :** Conception détaillée de la base + migrations SQL (testées)
 
 **À ne PAS faire maintenant :**
-- Créer des tables
-- Créer des migrations
-- Créer l'authentification
-- Créer des APIs métier
+- Créer l'authentification (Sprint 4)
+- Créer des APIs métier (Sprint 5+)
+- Créer des policies RLS fines / RBAC avancé (Sprint 12)
 - Installer des dépendances inutilement
-- Choisir définitivement un backend
+- Pousser des secrets dans Git
 
 ---
 
