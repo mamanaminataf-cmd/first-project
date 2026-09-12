@@ -2,9 +2,9 @@
 
 ## Statut actuel
 
-**Sprint actuel :** Sprint 1 — Conception fonctionnelle
+**Sprint actuel :** Sprint 2 — Architecture technique
 
-**Sprint précédent :** Sprint 0 — Audit et cadrage ✅
+**Sprint précédent :** Sprint 1 — Conception fonctionnelle ✅
 
 ## Liste des sprints
 
@@ -32,7 +32,8 @@
 ## État par phase
 
 - **Sprint 0 (terminé ✅) :** Audit et cadrage. Configuration initiale du projet, documentation, structure, Git.
-- **Sprint 1 (en cours) :** Conception fonctionnelle. Détail des pages, flux, états et règles métier.
+- **Sprint 1 (terminé ✅) :** Conception fonctionnelle. `docs/functional-design.md` : pages, flux, états, règles métier.
+- **Sprint 2 (en cours) :** Architecture technique. Stack choisie (React + Vite + Tailwind + Supabase), projet initialisé.
 
 ## À ne PAS faire pendant la configuration initiale
 

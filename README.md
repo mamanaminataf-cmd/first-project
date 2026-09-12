@@ -57,14 +57,13 @@ Trois rôles principaux :
 
 ## Technologies
 
-> **Note :** La stack technique définitive est en cours de validation.
-
-- **Frontend :** React / Next.js (développé avec OpenCode)
-- **Backend :** Node.js / Supabase (à valider)
-- **Base de données :** PostgreSQL / Supabase
-- **Auth :** Supabase Auth ou custom
-- **Storage :** Supabase Storage ou S3
-- **Paiements :** Stripe (à valider)
+- **Frontend :** React + Vite + TypeScript + Tailwind CSS (développé avec OpenCode)
+- **Backend :** Supabase (Auth + PostgreSQL + Storage + RLS)
+- **Base de données :** PostgreSQL (géré par Supabase)
+- **Auth :** Supabase Auth (email/mot de passe)
+- **Storage :** Supabase Storage
+- **Paiements :** Stripe (prévu, Sprint 8)
+- **Routing :** React Router
 
 ## Architecture générale
 
@@ -80,7 +79,13 @@ GitHub est la source de vérité du projet (versionnement, documentation, branch
 
 ## Installation
 
-> À compléter lorsque la stack technique sera définitivement choisie.
+```bash
+npm install          # installer les dépendances
+npm run dev          # lancer le serveur de développement
+npm run build        # build de production
+```
+
+Voir `.env.example` puis créer `.env` avec les clés Supabase.
 
 ## Variables d'environnement
 
@@ -121,9 +126,9 @@ security(auth): improve session validation
 
 ## Statut du projet
 
-**Sprint actuel :** Sprint 1 — Conception fonctionnelle
+**Sprint actuel :** Sprint 2 — Architecture technique
 
-**Phase :** Documentation et conception fonctionnelle uniquement
+**Phase :** Architecture technique — projet React initialisé (Sprint 2)
 
 Voir `docs/sprints.md` pour le plan complet des sprints.
 
@@ -131,7 +136,8 @@ Voir `docs/sprints.md` pour le plan complet des sprints.
 
 - `docs/cahier-des-charges.md` — Cahier des charges
 - `docs/functional-design.md` — Conception fonctionnelle
-- `docs/architecture.md` — Architecture technique
+- `docs/technical-architecture.md` — Architecture technique
+- `docs/architecture.md` — Architecture générale
 - `docs/database.md` — Base de données
 - `docs/security.md` — Sécurité
 - `docs/development-workflow.md` — Workflow de développement

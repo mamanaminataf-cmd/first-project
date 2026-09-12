@@ -204,7 +204,7 @@ Maintenir à jour :
 
 ## 15. STATUT DU PROJET
 
-**Sprint actuel :** 1 - Conception fonctionnelle
+**Sprint actuel :** 2 - Architecture technique
 
 **Phase :** Documentation et conception fonctionnelle uniquement
 
