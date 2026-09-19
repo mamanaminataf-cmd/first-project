@@ -126,9 +126,9 @@ security(auth): improve session validation
 
 ## Statut du projet
 
-**Sprint actuel :** Sprint 3 — Conception et création de la base de données
+**Sprint en cours :** Sprint 5 — Produits et catalogue
 
-**Phase :** Conception détaillée de la base + migrations SQL (testées)
+**Précédents :** Sprints 0-4 terminés ✅ (docs, conception, architecture, base de données et migrations testées, authentification et profils fonctionnels)
 
 Voir `docs/sprints.md` pour le plan complet des sprints.
 

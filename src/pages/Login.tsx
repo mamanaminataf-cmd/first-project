@@ -1,13 +1,18 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
+  const { signIn } = useAuth()
+  const navigate = useNavigate()
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-  const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!/^\S+@\S+\.\S+$/.test(email)) {
       setError('Adresse email invalide')
@@ -18,27 +23,16 @@ export default function Login() {
       return
     }
     setError('')
-    setSubmitted(true)
-  }
+    setSubmitting(true)
+    const { error: loginError } = await signIn(email, password)
+    setSubmitting(false)
 
-  if (submitted) {
-    return (
-      <main className="max-w-md mx-auto px-4 py-12">
-        <div className="bg-white border border-green-200 rounded-xl p-8 text-center">
-          <div className="text-6xl mb-4">🔓</div>
-          <h1 className="text-2xl font-bold mb-2">Connexion (démo)</h1>
-          <p className="text-sm text-gray-500 mb-6">
-            Bienvenue ! La connexion réelle avec Supabase sera connectée au Sprint 4.
-          </p>
-          <Link
-            to="/products"
-            className="inline-block bg-green-700 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-800"
-          >
-            Explorer le catalogue
-          </Link>
-        </div>
-      </main>
-    )
+    if (loginError) {
+      setError(loginError)
+      return
+    }
+
+    navigate('/')
   }
 
   return (
@@ -81,9 +75,10 @@ export default function Login() {
 
           <button
             type="submit"
-            className="w-full bg-green-700 text-white font-semibold py-3 rounded-xl hover:bg-green-800"
+            disabled={submitting}
+            className="w-full bg-green-700 text-white font-semibold py-3 rounded-xl hover:bg-green-800 disabled:opacity-60"
           >
-            Se connecter
+            {submitting ? 'Connexion...' : 'Se connecter'}
           </button>
 
           <p className="text-sm text-center mt-4">

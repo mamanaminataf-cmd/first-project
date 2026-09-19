@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
+import type { Role } from '../types'
 
-type Role = 'buyer' | 'seller'
 type FormState = 'idle' | 'submitting' | 'success'
-type Errors = Partial<Record<'name' | 'shop' | 'email' | 'password' | 'confirm', string>>
+type Errors = Partial<Record<'name' | 'shop' | 'email' | 'password' | 'confirm' | 'general', string>>
 
 export default function Register() {
+  const { signUp } = useAuth()
+
   const [role, setRole] = useState<Role>('buyer')
   const [name, setName] = useState('')
   const [shop, setShop] = useState('')
@@ -25,32 +28,40 @@ export default function Register() {
     return next
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const next = validate()
     setErrors(next)
-    if (Object.keys(next).length > 0) {
-      setState('idle')
+    if (Object.keys(next).length > 0) return
+
+    setState('submitting')
+    const { error } = await signUp(email, password, role, name, role === 'seller' ? shop : undefined)
+    setState('idle')
+
+    if (error) {
+      setErrors({ general: error })
       return
     }
-    setState('submitting')
-    setTimeout(() => setState('success'), 400)
+
+    // Confirmation email requise par défaut dans Supabase
+    setState('success')
   }
 
   if (state === 'success') {
     return (
       <main className="max-w-md mx-auto px-4 py-12">
         <div className="bg-white border border-green-200 rounded-xl p-8 text-center">
-          <div className="text-6xl mb-4">🎉</div>
-          <h1 className="text-2xl font-bold mb-2">Compte créé (démo)</h1>
+          <div className="text-6xl mb-4">📬</div>
+          <h1 className="text-2xl font-bold mb-2">Vérifie ta boîte mail</h1>
           <p className="text-sm text-gray-500 mb-6">
-            Merci {name.trim()} ! L'authentification réelle avec Supabase sera connectée au Sprint 4.
+            Un email de confirmation a été envoyé à <strong>{email}</strong>.
+            Clique sur le lien pour activer ton compte {role === 'seller' ? 'vendeur' : 'acheteur'}, puis connecte-toi.
           </p>
           <Link
-            to="/products"
+            to="/login"
             className="inline-block bg-green-700 text-white font-semibold px-6 py-3 rounded-xl hover:bg-green-800"
           >
-            Explorer le catalogue
+            Aller à la connexion
           </Link>
         </div>
       </main>
@@ -88,6 +99,12 @@ export default function Register() {
               🏪 Vendeur
             </button>
           </div>
+
+          {errors.general && (
+            <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2 mb-4">
+              {errors.general}
+            </p>
+          )}
 
           <div className="mb-4">
             <label className="block text-xs font-semibold text-gray-500 mb-1">

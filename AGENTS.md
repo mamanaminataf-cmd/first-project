@@ -204,13 +204,14 @@ Maintenir à jour :
 
 ## 15. STATUT DU PROJET
 
-**Sprint actuel :** 3 - Conception et création de la base de données
+**Sprint actuel :** 5 - Produits et catalogue
 
-**Phase :** Conception détaillée de la base + migrations SQL (testées)
+**Phase :** Sprint 4 ✅ terminé — Supabase Auth réel branché (connexion, inscription, profil via trigger, rôles), RLS corrigée (migrations 0009-0010), pages Login/Register/Account fonctionnelles.
 
 **À ne PAS faire maintenant :**
-- Créer l'authentification (Sprint 4)
-- Créer des APIs métier (Sprint 5+)
+- Créer des APIs métier avancés hors catalogue (panier, commandes, paiement : sprints 6-8)
+- Créer l'espace vendeur complet (Sprint 9)
+- Créer l'administration (Sprint 10)
 - Créer des policies RLS fines / RBAC avancé (Sprint 12)
 - Installer des dépendances inutilement
 - Pousser des secrets dans Git

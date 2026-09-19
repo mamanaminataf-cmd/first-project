@@ -5,8 +5,12 @@ export interface Profile {
   email: string
   full_name: string | null
   role: Role
+  status: 'active' | 'suspended' | 'pending_verification'
   shop_name?: string | null
+  shop_description?: string | null
+  avatar_url?: string | null
   created_at: string
+  updated_at: string
 }
 
 export interface Category {
