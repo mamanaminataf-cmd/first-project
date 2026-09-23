@@ -206,7 +206,7 @@ Maintenir à jour :
 
 **Sprint actuel :** 5 - Produits et catalogue
 
-**Phase :** Sprint 4 ✅ terminé — Supabase Auth réel branché (connexion, inscription, profil via trigger, rôles), RLS corrigée (migrations 0009-0010), pages Login/Register/Account fonctionnelles.
+**Phase :** Sprint 4 ✅ validé par l'utilisateur — Supabase Auth réel branché (connexion, inscription, profil via trigger, rôles), RLS corrigée (migrations 0009-0010), pages Login/Register/Account fonctionnelles.
 
 **À ne PAS faire maintenant :**
 - Créer des APIs métier avancés hors catalogue (panier, commandes, paiement : sprints 6-8)

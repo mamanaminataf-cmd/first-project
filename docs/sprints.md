@@ -35,7 +35,7 @@
 - **Sprint 1 (terminé ✅) :** Conception fonctionnelle. `docs/functional-design.md` : pages, flux, états, règles métier.
 - **Sprint 2 (terminé ✅) :** Architecture technique. Stack choisie (React + Vite + Tailwind + Supabase), projet initialisé.
 - **Sprint 3 (terminé ✅) :** Conception et création de la base de données. `docs/database.md` détaillée, migrations SQL testées (PGlite).
-- **Sprint 4 (terminé ✅) :** Authentification et profils. Supabase Auth branché (connexion, inscription, profil, rôles), migrations `0009` (trigger) + `0010` (fix RLS récursion), contexte React `AuthContext`, pages Login/Register/Account. Vérifié côté réel Supabase.
+- **Sprint 4 (terminé ✅) :** Authentification et profils. Supabase Auth branché (connexion, inscription, profil, rôles), migrations `0009` (trigger) + `0010` (fix RLS récursion), contexte React `AuthContext`, pages Login/Register/Account. **Validé par l'utilisateur** dans le navigateur.
 
 ## À ne PAS faire pendant la configuration initiale
 
