@@ -29,7 +29,7 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
           <>
             {isSeller && (
               <Link
-                to="/vendor/dashboard"
+                to="/seller/products"
                 className="text-sm text-gray-700 hover:text-green-700"
               >
                 🏪 Ma boutique

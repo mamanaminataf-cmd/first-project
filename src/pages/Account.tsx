@@ -19,13 +19,15 @@ export default function Account() {
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState('')
 
-  useEffect(() => {
-    if (user) {
-      setFullName(user.full_name ?? '')
-      setShopName(user.shop_name ?? '')
-      setShopDescription(user.shop_description ?? '')
-    }
-  }, [user])
+  // Recharge le formulaire quand l'utilisateur change (pattern React :
+  // ajustement d'etat au rendu plutot qu'un effet, cf. react.dev).
+  const [loadedUserId, setLoadedUserId] = useState<string | null>(null)
+  if (user && user.id !== loadedUserId) {
+    setLoadedUserId(user.id)
+    setFullName(user.full_name ?? '')
+    setShopName(user.shop_name ?? '')
+    setShopDescription(user.shop_description ?? '')
+  }
 
   useEffect(() => {
     if (status === 'unauthenticated') navigate('/login')

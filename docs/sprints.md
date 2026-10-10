@@ -36,6 +36,7 @@
 - **Sprint 2 (terminé ✅) :** Architecture technique. Stack choisie (React + Vite + Tailwind + Supabase), projet initialisé.
 - **Sprint 3 (terminé ✅) :** Conception et création de la base de données. `docs/database.md` détaillée, migrations SQL testées (PGlite).
 - **Sprint 4 (terminé ✅) :** Authentification et profils. Supabase Auth branché (connexion, inscription, profil, rôles), migrations `0009` (trigger) + `0010` (fix RLS récursion), contexte React `AuthContext`, pages Login/Register/Account. **Validé par l'utilisateur** dans le navigateur.
+- **Sprint 5 (terminé ✅) :** Produits et catalogue. Catalogue branché sur Supabase (recherche, catégorie, tri), fiche produit avec galerie d'images, publication de produit (1 à 5 images), « Ma boutique » (prix, stock, statut, suppression). Migrations `0011` (seed), `0012` (réparation encodage + image), `0013` (RLS vendeur). **Validé par l'utilisateur** dans le navigateur.
 
 ## À ne PAS faire pendant la configuration initiale
 

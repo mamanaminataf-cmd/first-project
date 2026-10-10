@@ -17,6 +17,14 @@ export interface Category {
   id: string
   name: string
   slug: string
+  description?: string | null
+}
+
+export interface ProductImage {
+  id: string
+  product_id: string
+  url: string
+  position: number
 }
 
 export interface Product {
@@ -28,8 +36,12 @@ export interface Product {
   price: number
   stock: number
   status: 'draft' | 'active' | 'inactive'
+  deleted_at?: string | null
   created_at: string
   updated_at: string
+  category?: Pick<Category, 'id' | 'name' | 'slug'> | null
+  images?: ProductImage[]
+  seller?: Pick<Profile, 'id' | 'full_name' | 'shop_name'> | null
 }
 
 export interface CartItem {

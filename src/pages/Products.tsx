@@ -1,31 +1,63 @@
-import { useSearchParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
-import type { Product } from '../types'
-
-const SAMPLE_PRODUCTS: Product[] = [
-  { id: '1', seller_id: '1', category_id: 'Légumes', name: 'Tomates cerises bio', description: '', price: 3.5, stock: 12, status: 'active', created_at: '', updated_at: '' },
-  { id: '2', seller_id: '1', category_id: 'Fruits', name: 'Pommes Gala bio', description: '', price: 2.9, stock: 8, status: 'active', created_at: '', updated_at: '' },
-  { id: '3', seller_id: '2', category_id: 'Légumes', name: 'Carottes des sables', description: '', price: 1.9, stock: 25, status: 'active', created_at: '', updated_at: '' },
-  { id: '4', seller_id: '2', category_id: 'Ferme', name: 'Œufs plein air', description: '', price: 4.2, stock: 0, status: 'active', created_at: '', updated_at: '' },
-  { id: '5', seller_id: '3', category_id: 'Épicerie', name: 'Miel de lavande', description: '', price: 8.9, stock: 6, status: 'active', created_at: '', updated_at: '' },
-]
-
-const CATEGORIES = ['Légumes', 'Fruits', 'Ferme', 'Céréales', 'Boissons', 'Épicerie']
+import { supabase } from '../lib/supabase'
+import type { Category, Product } from '../types'
 
 export default function Products() {
   const [params, setParams] = useSearchParams()
+  const [products, setProducts] = useState<Product[]>([])
+  const [categories, setCategories] = useState<Category[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
   const query = params.get('q')?.toLowerCase() ?? ''
   const cat = params.get('cat') ?? ''
-  const sort = params.get('sort') ?? 'popular'
+  const sort = params.get('sort') ?? 'newest'
 
-  let list = SAMPLE_PRODUCTS.filter(
+  useEffect(() => {
+    let active = true
+
+    async function load() {
+      setLoading(true)
+      setError(null)
+
+      const [{ data, error }, cats] = await Promise.all([
+        supabase
+          .from('products')
+          .select('*, category:categories(id, name, slug), images:product_images(id, url, position)')
+          .eq('status', 'active')
+          .is('deleted_at', null)
+          .order('created_at', { ascending: false }),
+        supabase.from('categories').select('id, name, slug').order('name'),
+      ])
+
+      if (!active) return
+
+      if (error) {
+        setError(error.message)
+      } else {
+        setProducts((data ?? []) as Product[])
+      }
+      setCategories((cats.data ?? []) as Category[])
+      setLoading(false)
+    }
+
+    load()
+    return () => {
+      active = false
+    }
+  }, [])
+
+  let list = products.filter(
     (p) =>
       (!query || p.name.toLowerCase().includes(query)) &&
-      (!cat || p.category_id === cat),
+      (!cat || p.category?.name === cat),
   )
 
-  if (sort === 'price-asc') list = [...list].sort((a, b) => a.price - b.price)
-  else if (sort === 'price-desc') list = [...list].sort((a, b) => b.price - a.price)
+  if (sort === 'price-asc') list = [...list].sort((a, b) => Number(a.price) - Number(b.price))
+  else if (sort === 'price-desc') list = [...list].sort((a, b) => Number(b.price) - Number(a.price))
+  else if (sort === 'name') list = [...list].sort((a, b) => a.name.localeCompare(b.name))
 
   const updateParam = (key: string, value: string) => {
     const next = new URLSearchParams(params)
@@ -37,7 +69,7 @@ export default function Products() {
   return (
     <main className="max-w-7xl mx-auto px-4 py-8">
       <nav className="text-sm text-gray-500 mb-6">
-        <a href="." className="hover:text-green-700">Accueil</a> / Catalogue
+        <Link to="/" className="hover:text-green-700">Accueil</Link> / Catalogue
       </nav>
 
       <div className="bg-white border border-gray-200 rounded-xl p-5 mb-6 flex flex-wrap gap-4 items-end">
@@ -59,8 +91,8 @@ export default function Products() {
             className="border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white"
           >
             <option value="">Toutes</option>
-            {CATEGORIES.map((c) => (
-              <option key={c} value={c}>{c}</option>
+            {categories.map((c) => (
+              <option key={c.id} value={c.name}>{c.name}</option>
             ))}
           </select>
         </div>
@@ -71,9 +103,10 @@ export default function Products() {
             onChange={(e) => updateParam('sort', e.target.value)}
             className="border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white"
           >
-            <option value="popular">Popularité</option>
+            <option value="newest">Plus récents</option>
             <option value="price-asc">Prix croissant</option>
             <option value="price-desc">Prix décroissant</option>
+            <option value="name">Nom A-Z</option>
           </select>
         </div>
         <button
@@ -89,11 +122,21 @@ export default function Products() {
         <span className="text-sm text-gray-500">{list.length} produit(s)</span>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {list.map((p) => (
-          <ProductCard key={p.id} product={p} />
-        ))}
-      </div>
+      {loading ? (
+        <p className="text-gray-500">Chargement du catalogue...</p>
+      ) : error ? (
+        <p className="text-red-600">Erreur de chargement : {error}</p>
+      ) : list.length === 0 ? (
+        <p className="text-gray-500">
+          Aucun produit trouvé. Le catalogue est vide — connecte-toi en vendeur pour ajouter des produits.
+        </p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {list.map((p) => (
+            <ProductCard key={p.id} product={p} />
+          ))}
+        </div>
+      )}
     </main>
   )
 }

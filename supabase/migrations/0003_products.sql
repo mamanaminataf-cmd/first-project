@@ -28,7 +28,8 @@ CREATE TABLE public.product_images (
     product_id  uuid NOT NULL REFERENCES public.products (id) ON DELETE CASCADE,
     url         text NOT NULL,
     position    integer NOT NULL DEFAULT 0,
-    created_at  timestamptz NOT NULL DEFAULT now()
+    created_at  timestamptz NOT NULL DEFAULT now(),
+    updated_at  timestamptz NOT NULL DEFAULT now()
 );
 
 COMMENT ON TABLE public.product_images IS 'Images d''un produit (1 à 5)';

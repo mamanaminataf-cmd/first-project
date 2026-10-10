@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Product } from '../types'
 
@@ -6,18 +7,34 @@ interface ProductCardProps {
   onAddToCart?: (product: Product) => void
 }
 
+function ProductImage({ product }: { product: Product }) {
+  const [failed, setFailed] = useState(false)
+  const url = product.images?.[0]?.url
+
+  if (!url || failed) {
+    return (
+      <div className="h-40 bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center text-5xl">
+        🌿
+      </div>
+    )
+  }
+  return (
+    <div className="h-40 bg-stone-100">
+      <img src={url} alt={product.name} className="w-full h-full object-cover" onError={() => setFailed(true)} />
+    </div>
+  )
+}
+
 export default function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const soldOut = product.stock <= 0
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl overflow-hidden transition hover:shadow-lg">
       <Link to={`/products/${product.id}`}>
-        <div className="h-40 bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center text-5xl">
-          🌿
-        </div>
+        <ProductImage product={product} />
       </Link>
       <div className="p-4">
-        <div className="text-xs text-gray-500 uppercase tracking-wide">{product.category_id}</div>
+        <div className="text-xs text-gray-500 uppercase tracking-wide">{product.category?.name ?? 'Bio'}</div>
         <Link
           to={`/products/${product.id}`}
           className="font-semibold text-gray-900 hover:text-green-700"
@@ -25,7 +42,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
           {product.name}
         </Link>
         <div className="flex items-center justify-between mt-3">
-          <span className="font-bold text-green-700">{product.price.toFixed(2)} €</span>
+          <span className="font-bold text-green-700">{Number(product.price).toFixed(2)} €</span>
           {soldOut ? (
             <span className="text-xs font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full">
               Rupture
